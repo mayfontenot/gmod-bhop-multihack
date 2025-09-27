@@ -7,6 +7,8 @@ void AutostrafeThread()
 	POINT cursor;
 	bool runOnce = false;
 
+	srand(time(NULL));
+
 	while (!GetAsyncKeyState(VK_END))
 	{
 		if (!conBools[CON_B_AUTOSTRAFE] || !GetAsyncKeyState(VK_XBUTTON2)) //if not active, then skip iteration and reset movement (only once)
@@ -27,6 +29,6 @@ void AutostrafeThread()
 
 		runOnce = true;
 
-		this_thread::sleep_for(chrono::milliseconds(1));
+		this_thread::sleep_for(chrono::milliseconds(conBools[CON_B_RANDOMIZER] ? 10 + rand() % 40 : 1));
 	}
 }

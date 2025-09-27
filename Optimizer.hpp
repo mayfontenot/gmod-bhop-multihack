@@ -29,7 +29,5 @@ void OptimizerThread()
 		float delta = yaw - idealYaw;
 
         *(float*)(ENGINE + m_angAbsRotation + 0x4) = NormalizeAngle(yaw - delta); //set yaw towards idealYaw
-
-		this_thread::sleep_for(chrono::milliseconds(1));
 	}
 }
