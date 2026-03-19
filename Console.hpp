@@ -8,7 +8,7 @@ void ConsoleThread(HINSTANCE hinstDll)
 	bool updateOutput = true;
 
 	AllocConsole();
-	SetConsoleTitleA("Meiware Bunny Hop v2025.09.23 (x64)");
+	SetConsoleTitleA("Meiware Bunny Hop v2026.03.16 (x64)");
 	freopen_s(&fConsole, "CONOUT$", "w", stdout);
 	freopen_s(&fConsole, "CONIN$", "r", stdin);
 
@@ -30,25 +30,13 @@ void ConsoleThread(HINSTANCE hinstDll)
 
 		if (GetAsyncKeyState(VK_UP) & 1)
 		{
-			conIndex--;
+			conIndex = (conIndex - 1 + CON_B_COUNT) % CON_B_COUNT;
 			updateOutput = true;
 		}
 
 		if (GetAsyncKeyState(VK_DOWN) & 1)
 		{
-			conIndex++;
-			updateOutput = true;
-		}
-
-		if (conIndex < 0)
-		{
-			conIndex = CON_B_COUNT;
-			updateOutput = true;
-		}
-
-		if (conIndex >= CON_B_COUNT)
-		{
-			conIndex = 0;
+			conIndex = (conIndex + 1) % CON_B_COUNT;
 			updateOutput = true;
 		}
 

@@ -11,14 +11,14 @@ const unsigned long long CLIENT = (unsigned long long)GetModuleHandleA("client.d
 const unsigned long long ENGINE = (unsigned long long)GetModuleHandleA("engine.dll");
 
 //client addresses
-const unsigned long long forceLeft = 0xA36938;
+const unsigned long long forceLeft = 0xA2B0B8;
 const unsigned long long forceRight = forceLeft + 0x10;
-const unsigned long long forceJump = 0xA388F0;
-const unsigned long long m_vecAbsVelocity = 0x86D110;
-const unsigned long long m_hLocalPlayer = 0x9497F0;
+const unsigned long long forceJump = 0xA2D070;
+const unsigned long long m_vecAbsVelocity = 0x863110;
+const unsigned long long m_hLocalPlayer = 0x93F7E0;
 
 //engine addresses
-const unsigned long long m_angAbsRotation = 0x6581FC;
+const unsigned long long m_angAbsRotation = 0x65D2FC;
 
 //offsets
 const unsigned long long m_fFlags = 0x440;
