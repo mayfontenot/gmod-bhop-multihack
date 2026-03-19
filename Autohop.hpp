@@ -3,25 +3,19 @@
 
 void AutohopThread()
 {
-	bool runOnce = false;
-
 	srand(time(NULL));
 
 	while (!GetAsyncKeyState(VK_END))
 	{
+		unsigned long long hLocalPlayer = *(unsigned long long*)(MOD_CLIENT + ADDR_LOCALPLAYER);
+		int* flags = (int*)(hLocalPlayer + OFFSET_FLAGS);
+		int* forceJump = (int*)(MOD_CLIENT + ADDR_FORCE_JUMP);
+
 		if (conBools[CON_B_AUTOHOP] && GetAsyncKeyState(VK_SPACE)) //skip iteration if not active
-		{
-			unsigned long long hLocalPlayer = *(unsigned long long*)(CLIENT + m_hLocalPlayer);
-
-			if (*(int*)(CLIENT + forceJump) == 5 && !(*(int*)(hLocalPlayer + m_fFlags) & FL_ONGROUND))
-				*(int*)(CLIENT + forceJump) = 4; //4 releases, 5 presses
-			else if (*(int*)(CLIENT + forceJump) == 4 && *(int*)(hLocalPlayer + m_fFlags) & FL_ONGROUND)
-				*(int*)(CLIENT + forceJump) = 5;
-
-			runOnce = true;
-		}
-		else if (runOnce)
-			runOnce = *(int*)(CLIENT + forceJump) = 5;
+			if (*forceJump == 5 && !(*flags & FL_ONGROUND))
+				*forceJump = 4; //4 releases, 5 presses
+			else if (*forceJump == 4 && *flags & FL_ONGROUND)
+				*forceJump = 5;
 
 		this_thread::sleep_for(chrono::milliseconds(conBools[CON_B_RANDOMIZER] ? 5 + rand() % 15 : 1));
 	}

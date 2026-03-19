@@ -10,7 +10,6 @@ void ConsoleThread(HINSTANCE hinstDll)
 	AllocConsole();
 	SetConsoleTitleA("Meiware Bunny Hop v2026.03.16 (x64)");
 	freopen_s(&fConsole, "CONOUT$", "w", stdout);
-	freopen_s(&fConsole, "CONIN$", "r", stdin);
 
 	while (!GetAsyncKeyState(VK_END))
 	{

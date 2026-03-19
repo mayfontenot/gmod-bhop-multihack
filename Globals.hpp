@@ -7,21 +7,21 @@
 using namespace std;
 
 //module addresses
-const unsigned long long CLIENT = (unsigned long long)GetModuleHandleA("client.dll");
-const unsigned long long ENGINE = (unsigned long long)GetModuleHandleA("engine.dll");
+const unsigned long long MOD_CLIENT = (unsigned long long)GetModuleHandleA("client.dll");
+const unsigned long long MOD_ENGINE = (unsigned long long)GetModuleHandleA("engine.dll");
 
 //client addresses
-const unsigned long long forceLeft = 0xA2B0B8;
-const unsigned long long forceRight = forceLeft + 0x10;
-const unsigned long long forceJump = 0xA2D070;
-const unsigned long long m_vecAbsVelocity = 0x863110;
-const unsigned long long m_hLocalPlayer = 0x93F7E0;
+const unsigned long long ADDR_FORCE_LEFT = 0xA2B0B8;
+const unsigned long long ADDR_FORCE_RIGHT = ADDR_FORCE_LEFT + 0x10;
+const unsigned long long ADDR_FORCE_JUMP = 0xA2D070;
+const unsigned long long ADDR_ABS_VELOCITY = 0x863110;
+const unsigned long long ADDR_LOCALPLAYER = 0x93F7E0;
 
 //engine addresses
-const unsigned long long m_angAbsRotation = 0x65D2FC;
+const unsigned long long ADDR_ABS_ROTATION = 0x65D2FC;
 
 //offsets
-const unsigned long long m_fFlags = 0x440;
+const unsigned long long OFFSET_FLAGS = 0x440;
 
 //constant globals
 const int CON_B_RANDOMIZER = 0, CON_B_AUTOHOP = 1, CON_B_AUTOSTRAFE = 2, CON_B_OPTIMIZER = 3, CON_B_COUNT = 4;
